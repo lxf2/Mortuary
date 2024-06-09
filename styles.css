@@ -11,6 +11,20 @@ header {
     color: #fff;  
     padding: 20px;  
     text-align: center;  
+    /* 初始时设置为透明 */  
+    opacity: 0;  
+    /* 添加过渡效果 */  
+    transition: opacity 2s ease-in-out;  
+    /* 为了让元素在页面加载时即开始过渡，我们可以使用CSS动画或者JavaScript来设置opacity为1 */  
+    /* 这里我们使用CSS动画的一个简单技巧，即设置一个几乎立即完成的动画来触发过渡 */  
+    animation: fadeIn 2s forwards;  
+}  
+  
+/* CSS动画定义 */  
+@keyframes fadeIn {  
+    to {  
+        opacity: 1;  
+    }  
 }  
   
 nav ul {  
@@ -18,7 +32,7 @@ nav ul {
     margin: 0;  
     padding: 0;  
     overflow: hidden;  
-    background-color: #f2f2f2;  
+    background-color: #D1D1D1;  
 }  
   
 nav ul li {  
@@ -34,11 +48,12 @@ nav ul li a {
 }  
   
 nav ul li a:hover {  
-    background-color: #ddd;  
+    background-color: #FE9B9C;  
 }  
   
 main {  
-    margin: 20px;  
+    margin: 1px;
+	padding-top: 10px;
 }  
   
 section {  
@@ -54,4 +69,39 @@ footer {
     left: 0;  
     bottom: 0;  
     width: 100%;  
+}
+
+nav {  
+    /* 初始状态，比如透明度为0，即完全透明 */  
+    opacity: 0;  
+    /* 添加过渡效果，比如2秒内透明度从0变到1 */  
+    transition: opacity 2s ease-in-out;  
+    /* 其他样式... */  
+    background-color: #333;  
+    color: #fff;  
+    padding: 10px;  
+    text-align: center;  
+}  
+  
+/* 定义一个类，用于改变透明度到1 */  
+nav.show {  
+    opacity: 1;  
+}
+
+/* styles.css */  
+  
+#myNav, main, footer {  
+    /* 初始状态样式 */  
+    opacity: 0;  
+    transition: opacity 1s ease-in-out; /* 过渡效果设置 */  
+}  
+  
+#myNav.show, main.show, footer.show {  
+    /* 添加 show 类后的样式 */  
+    opacity: 1;  
+}
+
+/* 初始样式，这里不设置具体的背景颜色 */  
+#myHeader, #myFooter {  
+  transition: background-color 0.5s ease; /* 可选的过渡效果 */  
 }
