@@ -1,32 +1,53 @@
 @charset "utf-8";
 /* CSS Document */
-body {  
-    font-family: Arial, sans-serif;  
-    margin: 0;  
-    padding: 0;  
+body {    
+    font-family: Arial, sans-serif;    
+    margin: 0;    
+    padding: 0;    
 }  
   
-header {  
-    background-color: #333;  
-    color: #fff;  
-    padding: 20px;  
-    text-align: center;  
-    /* 初始时设置为透明 */  
-    opacity: 0;  
-    /* 添加过渡效果 */  
-    transition: opacity 2s ease-in-out;  
-    /* 为了让元素在页面加载时即开始过渡，我们可以使用CSS动画或者JavaScript来设置opacity为1 */  
-    /* 这里我们使用CSS动画的一个简单技巧，即设置一个几乎立即完成的动画来触发过渡 */  
-    animation: fadeIn 2s forwards;  
+#myHeader {    
+    display: flex;    
+    align-items: center; /* 垂直居中 */    
+    justify-content: space-between; /* 水平两端对齐，logo靠左，h1靠右（但因为没有空间，所以h1会居中） */    
+    background-color: #333;    
+    color: #fff;    
+    padding: 20px;    
+    /* 初始时设置为透明 */    
+    opacity: 0;    
+    /* 添加过渡效果 */    
+    transition: opacity 2s ease-in-out;    
+    /* CSS动画来触发过渡 */    
+    animation: fadeIn 2s forwards;    
 }  
   
-/* CSS动画定义 */  
-@keyframes fadeIn {  
-    to {  
-        opacity: 1;  
-    }  
+#logo {    
+    height: 50px; /* 设置logo的高度 */    
+    width: auto;  /* 根据图片原始比例自动设置宽度 */    
+    margin-right: 10px; /* 给logo右侧一些空间 */  
 }  
   
+#myHeader h1 {    
+    margin: 0; /* 移除可能的默认外边距 */    
+    /* 其他h1样式 */    
+    flex: 1; /* 允许h1填充剩余的空间，但由于没有右侧内容，它会居中 */  
+    text-align: left; /* 如果需要，可以将h1文本左对齐 */  
+	transform: translateX(-600px);
+}  
+  
+/* CSS动画定义 */    
+@keyframes fadeIn {    
+    to {    
+        opacity: 1;    
+    }    
+}  
+  
+/* 其他部分的样式保持不变 */  
+  
+/* 注意：如果您有nav或其他元素在header内，并且您希望它们与logo和h1并排，  
+   您可能需要为它们添加适当的Flexbox样式来正确放置它们。  
+   但在当前的上下文中，我们仅关注logo和h1的布局。*/ 
+
 nav ul {  
     list-style-type: none;  
     margin: 0;  
@@ -54,6 +75,10 @@ nav ul li a:hover {
 main {  
     margin: 1px;
 	padding-top: 10px;
+	min-height: calc(100vh - 120px); /* 假设footer的高度是100px，加上padding 20px */  
+    margin: 1px;  
+    padding-top: 10px;  
+    padding-bottom: 120px; /* 和footer的高度相同或更大，以确保内容不会被footer覆盖 */  
 }  
   
 section {  
